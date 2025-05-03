@@ -3,7 +3,7 @@
  * Email service for sending notification and confirmation emails
  */
 
-interface EmailData {
+export interface EmailData {
   name: string;
   email: string;
   subject: string;
