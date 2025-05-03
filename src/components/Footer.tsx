@@ -25,8 +25,12 @@ export function Footer() {
       <div className="container mx-auto py-16 px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
           <div className="md:col-span-4">
-            <a href="/" className="text-2xl font-display font-bold text-primary">
-              Luxuria <span className="text-secondary">Oasis</span>
+            <a href="/" className="flex items-center">
+              <img 
+                src="/lovable-uploads/a66cdc3b-09ad-4b52-8ff8-8c7c3b78ad48.png" 
+                alt="Ixora Logo" 
+                className="h-12 w-auto"
+              />
             </a>
             <p className="mt-4 text-muted-foreground max-w-xs">
               Where luxury meets nature in the serene hills of Mahabaleshwar. Experience unparalleled comfort and hospitality.
@@ -92,7 +96,7 @@ export function Footer() {
             </form>
             <div className="mt-6">
               <p className="text-muted-foreground text-sm">
-                © {new Date().getFullYear()} Luxuria Oasis. All rights reserved.
+                © {new Date().getFullYear()} IXORA Luxury Resort. All rights reserved.
               </p>
             </div>
           </div>

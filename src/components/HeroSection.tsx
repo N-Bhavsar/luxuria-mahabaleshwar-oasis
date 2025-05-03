@@ -54,7 +54,7 @@ export function HeroSection() {
       {/* Content */}
       <div className="relative h-full flex flex-col justify-center items-center text-center px-4 container mx-auto">
         <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white font-medium drop-shadow-md animate-fade-in">
-          Luxuria Mahabaleshwar <span className="italic font-light">Oasis</span>
+          <span className="gold-text">IXORA</span> Luxury <span className="italic font-light">Resort</span>
         </h1>
         
         <p className="mt-6 max-w-lg mx-auto text-lg sm:text-xl text-white/90 font-light animate-fade-in" style={{ animationDelay: "300ms" }}>
@@ -78,7 +78,7 @@ export function HeroSection() {
             className={cn(
               "w-2.5 h-2.5 rounded-full transition-all",
               activeSlide === index
-                ? "bg-white scale-125"
+                ? "bg-primary scale-125"
                 : "bg-white/50 hover:bg-white/80"
             )}
             aria-label={`Go to slide ${index + 1}`}

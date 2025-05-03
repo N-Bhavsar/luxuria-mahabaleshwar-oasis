@@ -45,8 +45,12 @@ export function Navbar() {
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
         <div className="flex items-center">
-          <a href="/" className="text-xl md:text-2xl font-display font-bold text-primary">
-            Luxuria <span className="text-secondary">Oasis</span>
+          <a href="/" className="flex items-center">
+            <img 
+              src="/lovable-uploads/a66cdc3b-09ad-4b52-8ff8-8c7c3b78ad48.png" 
+              alt="Ixora Logo" 
+              className="h-10 w-auto mr-2"
+            />
           </a>
         </div>
 
@@ -80,8 +84,12 @@ export function Navbar() {
         <div className="fixed inset-0 bg-background z-50 lg:hidden">
           <div className="flex flex-col h-full overflow-y-auto">
             <div className="container mx-auto px-4 py-6 flex justify-between items-center">
-              <a href="/" className="text-xl font-display font-bold text-primary">
-                Luxuria <span className="text-secondary">Oasis</span>
+              <a href="/" className="flex items-center">
+                <img 
+                  src="/lovable-uploads/a66cdc3b-09ad-4b52-8ff8-8c7c3b78ad48.png" 
+                  alt="Ixora Logo" 
+                  className="h-10 w-auto"
+                />
               </a>
               <Button variant="ghost" size="icon" onClick={() => setMobileMenuOpen(false)}>
                 <X className="h-6 w-6" />

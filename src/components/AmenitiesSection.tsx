@@ -40,7 +40,7 @@ export function AmenitiesSection() {
   return (
     <section id="amenities" className="section bg-muted">
       <div className="container mx-auto">
-        <h2 className="section-title text-center">World-Class Amenities</h2>
+        <h2 className="section-title text-center gold-text">World-Class Amenities</h2>
         <p className="section-subtitle text-center">
           Indulge in our comprehensive range of amenities designed to elevate your stay and create unforgettable experiences.
         </p>
