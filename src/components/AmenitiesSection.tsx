@@ -1,5 +1,5 @@
 
-import { Spa, SwimmingPool, Gym, Restaurant, Wifi, BedDouble } from "lucide-react";
+import { Waves, Bath, Dumbbell, UtensilsCrossed, Wifi, BedDouble } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
@@ -7,22 +7,22 @@ const amenities = [
   {
     name: "Luxury Spa",
     description: "Rejuvenate your mind and body with our holistic spa treatments.",
-    icon: Spa,
+    icon: Bath,
   },
   {
     name: "Swimming Pool",
     description: "Take a refreshing dip in our temperature-controlled infinity pool.",
-    icon: SwimmingPool,
+    icon: Waves,
   },
   {
     name: "Modern Fitness Center",
     description: "Stay on top of your fitness routine with our state-of-the-art gym equipment.",
-    icon: Gym,
+    icon: Dumbbell,
   },
   {
     name: "Multi-cuisine Restaurant",
     description: "Enjoy exquisite dining with panoramic views of the valley.",
-    icon: Restaurant,
+    icon: UtensilsCrossed,
   },
   {
     name: "High-speed Wi-Fi",
