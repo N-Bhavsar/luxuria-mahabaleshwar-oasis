@@ -37,20 +37,23 @@ export function Navbar() {
   return (
     <nav
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out py-4",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out py-2",
         isScrolled
           ? "bg-background/90 backdrop-blur-md shadow-md"
           : "bg-transparent"
       )}
     >
-      <div className="container mx-auto px-4 flex items-center justify-between">
+      <div className="container mx-auto px-4 flex items-center justify-between h-16">
         <div className="flex items-center">
           <a href="/" className="flex items-center">
-            <img 
-              src="/lovable-uploads/a66cdc3b-09ad-4b52-8ff8-8c7c3b78ad48.png" 
-              alt="Ixora Logo" 
-              className="h-10 w-auto mr-2"
-            />
+            <div className="h-14 flex items-center justify-center">
+              <img 
+                src="/lovable-uploads/a66cdc3b-09ad-4b52-8ff8-8c7c3b78ad48.png" 
+                alt="Ixora Luxury Resort Logo" 
+                className="h-full w-auto object-contain"
+              />
+            </div>
+            <span className="ml-2 text-sm font-medium hidden md:block gold-text">Luxury in Nature</span>
           </a>
         </div>
 
@@ -85,11 +88,14 @@ export function Navbar() {
           <div className="flex flex-col h-full overflow-y-auto">
             <div className="container mx-auto px-4 py-6 flex justify-between items-center">
               <a href="/" className="flex items-center">
-                <img 
-                  src="/lovable-uploads/a66cdc3b-09ad-4b52-8ff8-8c7c3b78ad48.png" 
-                  alt="Ixora Logo" 
-                  className="h-10 w-auto"
-                />
+                <div className="h-14 flex items-center justify-center">
+                  <img 
+                    src="/lovable-uploads/a66cdc3b-09ad-4b52-8ff8-8c7c3b78ad48.png" 
+                    alt="Ixora Luxury Resort Logo" 
+                    className="h-full w-auto object-contain"
+                  />
+                </div>
+                <span className="ml-2 text-sm font-medium gold-text">Luxury in Nature</span>
               </a>
               <Button variant="ghost" size="icon" onClick={() => setMobileMenuOpen(false)}>
                 <X className="h-6 w-6" />

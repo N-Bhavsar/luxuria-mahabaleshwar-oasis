@@ -62,8 +62,15 @@ export function HeroSection() {
         </p>
         
         <div className="mt-10 flex flex-col sm:flex-row gap-4 animate-fade-in" style={{ animationDelay: "600ms" }}>
-          <Button className="luxury-btn text-lg px-8 py-6">Book Your Stay</Button>
-          <Button variant="outline" className="luxury-btn-outline text-white border-white hover:bg-white/20 px-8 py-6">
+          <Button 
+            className="luxury-btn text-lg px-8 py-6 transition-all duration-300 hover:scale-105 hover:bg-primary/80"
+          >
+            Book Your Stay
+          </Button>
+          <Button 
+            variant="outline" 
+            className="luxury-btn-outline text-white border-white hover:bg-white/20 px-8 py-6 transition-all duration-300 hover:scale-105"
+          >
             Explore Experiences
           </Button>
         </div>
