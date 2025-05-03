@@ -17,6 +17,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
 import { MapPin, Phone, Mail } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
+import { sendContactEmails } from "@/utils/emailService";
 
 const formSchema = z.object({
   name: z.string().min(2, "Please enter your full name."),
@@ -39,19 +40,36 @@ export function ContactSection() {
     },
   });
   
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
     
-    // Simulate API call
-    setTimeout(() => {
-      console.log("Contact Form Data:", values);
+    try {
+      // Send emails using our new email service
+      const result = await sendContactEmails(values);
+      
+      if (result.success) {
+        toast({
+          title: "Message Received",
+          description: "Thank you for reaching out. We've sent a confirmation to your email and our team will get back to you shortly!",
+        });
+        form.reset();
+      } else {
+        toast({
+          title: "Something went wrong",
+          description: result.error || "Failed to send your message. Please try again later.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
       toast({
-        title: "Message Received",
-        description: "Thank you for reaching out. We'll get back to you shortly!",
+        title: "Something went wrong",
+        description: "Failed to send your message. Please try again later.",
+        variant: "destructive",
       });
+    } finally {
       setIsSubmitting(false);
-      form.reset();
-    }, 1500);
+    }
   }
   
   return (
@@ -98,8 +116,8 @@ export function ContactSection() {
                 </div>
                 <div>
                   <h4 className="text-lg font-medium mb-1">Email</h4>
-                  <p className="text-muted-foreground">reservations@luxuriaoasis.com</p>
-                  <p className="text-muted-foreground">info@luxuriaoasis.com</p>
+                  <p className="text-muted-foreground">reservations@ixoraresort.com</p>
+                  <p className="text-muted-foreground">info@ixoraresort.com</p>
                 </div>
               </div>
             </div>

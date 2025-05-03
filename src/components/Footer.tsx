@@ -27,7 +27,7 @@ export function Footer() {
           <div className="md:col-span-4">
             <a href="/" className="flex items-center">
               <img 
-                src="/lovable-uploads/a66cdc3b-09ad-4b52-8ff8-8c7c3b78ad48.png" 
+                src="/lovable-uploads/2e0d9d70-9600-4f1e-ad1f-00b255b9bd6c.png" 
                 alt="Ixora Logo" 
                 className="h-12 w-auto"
               />
