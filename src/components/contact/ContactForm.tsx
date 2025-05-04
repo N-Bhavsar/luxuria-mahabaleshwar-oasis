@@ -15,7 +15,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { sendContactEmails } from "@/utils/emailService";
+import { sendContactEmails, EmailData } from "@/utils/emailService";
 
 const formSchema = z.object({
   name: z.string().min(2, "Please enter your full name."),
@@ -44,8 +44,17 @@ export function ContactForm() {
     setIsSubmitting(true);
     
     try {
-      // Send emails using our email service
-      const result = await sendContactEmails(values);
+      // Cast the form values as EmailData since we know all required fields are present
+      // The form validation ensures all fields are filled, so this cast is safe
+      const emailData: EmailData = {
+        name: values.name,
+        email: values.email,
+        subject: values.subject,
+        message: values.message,
+      };
+
+      // Send emails using our email service with properly typed data
+      const result = await sendContactEmails(emailData);
       
       if (result.success) {
         toast({
