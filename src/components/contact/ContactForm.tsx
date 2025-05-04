@@ -16,6 +16,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { sendContactEmails, EmailData } from "@/utils/emailService";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
+import { Info } from "lucide-react";
 
 const formSchema = z.object({
   name: z.string().min(2, "Please enter your full name."),
@@ -28,6 +30,7 @@ export type ContactFormValues = z.infer<typeof formSchema>;
 
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
   const { toast } = useToast();
   
   const form = useForm<ContactFormValues>({
@@ -60,8 +63,15 @@ export function ContactForm() {
         toast({
           title: "Message Received",
           description: "Thank you for reaching out. We've sent a confirmation to your email and our team will get back to you shortly!",
+          className: "bg-luxury-100 border-luxury-300 text-luxury-900",
         });
         form.reset();
+        setFormSubmitted(true);
+        
+        // Reset the success state after showing success feedback
+        setTimeout(() => {
+          setFormSubmitted(false);
+        }, 3000);
       } else {
         toast({
           title: "Something went wrong",
@@ -82,7 +92,7 @@ export function ContactForm() {
   }
 
   return (
-    <div className="animate-zoom-in">
+    <div className={`animate-zoom-in transition-all duration-500 ${formSubmitted ? 'scale-[1.02]' : ''}`}>
       <h3 className="text-2xl font-serif font-medium mb-6">Send Us a Message</h3>
       
       <Form {...form}>
@@ -92,9 +102,13 @@ export function ContactForm() {
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Full Name</FormLabel>
+                <FormLabel className="text-luxury-800 dark:text-luxury-200">Full Name</FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter your name" {...field} />
+                  <Input 
+                    placeholder="Enter your name" 
+                    {...field} 
+                    className="input-focus-effect border-luxury-200 dark:border-luxury-800 focus:border-luxury-400" 
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -106,9 +120,14 @@ export function ContactForm() {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel className="text-luxury-800 dark:text-luxury-200">Email</FormLabel>
                 <FormControl>
-                  <Input type="email" placeholder="Enter your email" {...field} />
+                  <Input 
+                    type="email" 
+                    placeholder="Enter your email" 
+                    {...field} 
+                    className="input-focus-effect border-luxury-200 dark:border-luxury-800 focus:border-luxury-400" 
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -120,9 +139,23 @@ export function ContactForm() {
             name="subject"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Subject</FormLabel>
+                <div className="flex items-center space-x-2">
+                  <FormLabel className="text-luxury-800 dark:text-luxury-200">Subject</FormLabel>
+                  <HoverCard>
+                    <HoverCardTrigger asChild>
+                      <Info size={16} className="text-luxury-500 cursor-help" />
+                    </HoverCardTrigger>
+                    <HoverCardContent className="w-80">
+                      <p className="text-sm">Select a subject related to your inquiry for faster response.</p>
+                    </HoverCardContent>
+                  </HoverCard>
+                </div>
                 <FormControl>
-                  <Input placeholder="How can we help you?" {...field} />
+                  <Input 
+                    placeholder="How can we help you?" 
+                    {...field} 
+                    className="input-focus-effect border-luxury-200 dark:border-luxury-800 focus:border-luxury-400" 
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -134,11 +167,11 @@ export function ContactForm() {
             name="message"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Message</FormLabel>
+                <FormLabel className="text-luxury-800 dark:text-luxury-200">Message</FormLabel>
                 <FormControl>
                   <Textarea 
                     placeholder="Please provide details about your inquiry..." 
-                    className="min-h-[150px]"
+                    className="min-h-[150px] input-focus-effect border-luxury-200 dark:border-luxury-800 focus:border-luxury-400"
                     {...field}
                   />
                 </FormControl>
@@ -149,10 +182,12 @@ export function ContactForm() {
           
           <Button 
             type="submit" 
-            className="luxury-btn w-full"
+            className={`w-full bg-gold-gradient text-luxury-950 hover:shadow-lg hover:scale-[1.02] transition-all duration-300 font-medium
+                      ${isSubmitting ? 'opacity-80 cursor-wait' : ''} 
+                      ${formSubmitted ? 'bg-forest-500 text-white' : ''}`}
             disabled={isSubmitting}
           >
-            {isSubmitting ? "Sending..." : "Send Message"}
+            {isSubmitting ? "Sending..." : formSubmitted ? "Message Sent!" : "Send Message"}
           </Button>
         </form>
       </Form>
